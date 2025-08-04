@@ -10,3 +10,12 @@ resource "aws_route53_record" "website_record" {
     evaluate_target_health = false
   }
 }
+
+# Subdominio que apuntará a la IP pública del servicio ECS
+resource "aws_route53_record" "ecs_origin" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = "ecs-origin.${var.domain_name}"
+  type    = "A"
+  ttl     = 60
+  records = ["0.0.0.0"] # se actualizará automáticamente con la IP real
+}

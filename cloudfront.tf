@@ -4,7 +4,7 @@ resource "aws_cloudfront_distribution" "ecs_distribution" {
   default_root_object = "index.html"
 
   origin {
-    domain_name = aws_ecs_service.app_service.network_configuration[0].assign_public_ip
+    domain_name = aws_route53_record.ecs_origin.fqdn
     origin_id   = "ecs-origin"
     custom_origin_config {
       http_port              = 3000
@@ -12,7 +12,7 @@ resource "aws_cloudfront_distribution" "ecs_distribution" {
       origin_protocol_policy = "http-only"
       origin_ssl_protocols   = ["TLSv1.2"]
     }
-  }
+}
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
