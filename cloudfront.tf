@@ -1,7 +1,3 @@
-data "aws_acm_certificate" "ssl_cert" {
-  domain   = var.domain_name
-  statuses = ["ISSUED"]
-}
 
 resource "aws_cloudfront_distribution" "ecs_distribution" {
   enabled             = true
