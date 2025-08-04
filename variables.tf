@@ -1,4 +1,3 @@
-
 variable "aws_account_id" {
   description = "AWS Account ID"
   type        = string
@@ -16,16 +15,8 @@ variable "project_name" {
   default     = "devops-seed"
 }
 
-variable "alb_name" {
-  default = "devops-seed-alb"
-}
-
-variable "alb_target_group_name" {
-  default = "devops-seed-tg"
-}
-
 variable "domain_name" {
+  description = "Nombre de dominio"
   type        = string
-  description = "Nombre de dominio principal"
   default     = "projects-zahid.com"
 }
